@@ -75,7 +75,9 @@
 
     <!-- electronics style -->
     <style>
-        .electronics-brand {
+        .electronics-brand,
+        .Mobiles-brand,
+        .accessories, .mobilecase {
             opacity: 0.6;
             font-size: 25px;
         }
@@ -90,9 +92,12 @@
             height: 250px;
         }
 
-        .electronics-items {
+        .electronics-items,
+        .mobile-items,
+        .accessories-items,.mobilecase{
             display: flex;
             flex-wrap: wrap;
+            gap: 10px;
         }
 
         .card-title {
@@ -101,27 +106,33 @@
 
         .card {
             transition: 0.3s ease;
-
+            cursor: pointer;
         }
 
         .card:hover {
 
             box-shadow: 0px 0px 6px;
             z-index: 9999;
-            
+
         }
     </style>
     <div class="for-electronics container d-flex flex-lg-column mt-5">
         <h2 class="electronics-brand">Electronics</h2>
-        <div class="electronics-items w-100 mt-3 d-flex">
+        <!-- for electronics -->
+        <div class="electronics-items w-100 mt-3">
             @foreach ($products as $product)
 
 
-                <div class="card">
+                <div class="card" id="{{$product->E_id}}">
                     <img src="{{$product->img_link}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$product->card_title}}</h5>
-                        <p class="card-text" style="font-size:12px">{{$product->card_text}}</p>
+                        <p class="card-text" style="font-size:12px">{{$product->card_text}} <span
+                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$product->rating}}
+                                <i class="bi bi-star-fill"
+                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
+                            </span>
+                        </p>
 
                         @if ($product->limited_deal != '')
                             <span class="card-text bg-danger text-white p-1"
@@ -129,9 +140,7 @@
                         @endif
                         <p class="card-text mt-2 mb-0">${{$product->cost}}</p>
                         <span class="card-text" style="font-size:12px;">{{$product->emi_option}}</span><br>
-                        <span class="card-text" style="font-size:12px;">{{$product->delivery_option}}</span>
-                        <a href="{{url('/addtocart/1')}}" class="btn"
-                            style="background-color:yellow;color:black;border-radius:5px;opacity:0.8;">Add to cart</a>
+                        <span class="card-text" style="font-size:12px;">{{$product->delivery_option}}</span><br>
                     </div>
                 </div>
 
@@ -140,17 +149,119 @@
 
 
         </div>
-
-        <script>
-            $(document).ready(function () {
-                const isLogin = @json(Auth::check());
-                if (isLogin) {
-                    setTimeout(function () {
-                        $('#login-successful-msg').hide();
-                    }, 1000);
-                }
+    </div>
+    <!-- for mobiles -->
+    <div class="for-mobile  container d-flex flex-lg-column mt-5">
+        <h2 class="Mobiles-brand">Mobiles</h2>
+        <div class="mobile-items w-100 mt-3">
+            @foreach ($mobilelist as $mobile)
 
 
-            });
-        </script>
-        @endsection
+                <div class="card" id="{{$mobile->productid}}">
+                    <img src="{{$mobile->img_link}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$mobile->brand_name}}{{$mobile->version}}</h5>
+                        <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
+                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$mobile->rating}}<i
+                                    class="bi bi-star-fill"
+                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i></span>
+                        </p>
+
+                        @if ($mobile->Limited_deal != '')
+                            <span class="card-text bg-danger text-white p-1"
+                                style="font-size:14px;border-radius:5px;">{{$mobile->Limited_deal}}</span>
+                        @endif
+
+                        <p class="card-text mt-2 mb-0">${{$mobile->price}}</p>
+                        <span class="card-text" style="font-size:12px;">{{$mobile->emi_option}}</span><br>
+                        <span class="card-text" style="font-size:12px;">{{$mobile->delivery_option}}</span><br>
+                    </div>
+                </div>
+
+
+            @endforeach
+        </div>
+    </div>
+
+    <!-- for Accessories -->
+    <div class="for-accessories  container d-flex flex-lg-column mt-5">
+        <h2 class="accessories">Accessories</h2>
+        <div class="accessories-items w-100 mt-3">
+            @foreach ($accessories as $accessorie)
+
+
+                <div class="card" id="{{$accessorie->acc_id}}">
+                    <img src="{{$accessorie->img_link}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$accessorie->brand_name}}{{$accessorie->version}}</h5>
+                        <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
+                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$accessorie->rating}}
+                                <i class="bi bi-star-fill"
+                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
+                            </span>
+                        </p>
+
+                        @if ($accessorie->Limited_deal != '')
+                            <span class="card-text bg-danger text-white p-1"
+                                style="font-size:14px;border-radius:5px;">{{$accessorie->limited_deal}}</span>
+                        @endif
+
+                        <p class="card-text mt-2 mb-0">${{$accessorie->price}}</p>
+                        <span class="card-text" style="font-size:12px;">{{$accessorie->emi_option}}</span><br>
+                        <span class="card-text" style="font-size:12px;">{{$accessorie->delivery_option}}</span><br>
+                    </div>
+                </div>
+
+
+            @endforeach
+        </div>
+    </div>
+
+
+    <!-- mobile case -->
+
+    <div class="for-mobilecase  container d-flex flex-lg-column mt-5">
+        <h2 class="mobilecase">MobileCase</h2>
+        <div class="mobile-items w-100 mt-3">
+            @foreach ($mobiles as $mobile)
+
+
+                <div class="card" id="{{$mobile->Case_id}}">
+                    <img src="{{$mobile->img_link}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$mobile->CaseName}}</h5>
+                        <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
+                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$mobile->Ratings}}
+                                <i class="bi bi-star-fill"
+                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
+                            </span>
+                        </p>
+
+                        @if ($mobile->Limited_deal != '')
+                            <span class="card-text bg-danger text-white p-1"
+                                style="font-size:14px;border-radius:5px;">{{$mobile->limited_deal}}</span>
+                        @endif
+
+                        <p class="card-text mt-2 mb-0">${{$mobile->price}}</p>
+                        <span class="card-text" style="font-size:12px;">{{$mobile->emi_option}}</span><br>
+                        <span class="card-text" style="font-size:12px;">{{$mobile->delivery_option}}</span><br>
+                    </div>
+                </div>
+
+
+            @endforeach
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            const isLogin = @json(Auth::check());
+            if (isLogin) {
+                setTimeout(function () {
+                    $('#login-successful-msg').hide();
+                }, 1000);
+            }
+
+
+        });
+    </script>
+    @endsection

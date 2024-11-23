@@ -70,17 +70,22 @@
         height: 12%;
 
     }
-
+    html
+    {
+        height: 100%;
+    }
     body {
         width: 100%;
-        height: 90vh;
+        height: 100%;
 
     }
 
     .layout-container {
-        height: 100%;
         margin-top: 8%;
+        height: 88%;
+
     }
+
 </style>
 
 <body>
@@ -153,9 +158,9 @@
 
         @if (!(request()->is('login')) && !(request()->is('register')))
             <article class="d-flex justify-content-center">
-                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.for-electronics').scrollIntoView({ behavior: 'smooth' })">
+                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.electronics-brand').scrollIntoView({ behavior: 'smooth' })">
                     Electronics</p>
-                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.for-mobile').scrollIntoView({ behavior: 'smooth' })">Mobile
+                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.Mobiles-brand').scrollIntoView({ behavior: 'smooth' })">Mobile
                 </p>
                 <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.for-accessories').scrollIntoView({ behavior: 'smooth' })">
                     Accessories</p>
@@ -176,7 +181,6 @@
 
 
     </div>
-
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

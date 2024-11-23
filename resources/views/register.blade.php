@@ -3,7 +3,7 @@
 @section('main-content')
 <style>
     .register-container {
-        height: 80%;
+        height: 100%;
     }
 
     #register-form{
