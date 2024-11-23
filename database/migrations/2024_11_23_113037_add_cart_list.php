@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CartUserList extends Migration
+class AddCartList extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,6 @@ class CartUserList extends Migration
      * @return void
      */
     public function up()
-    {
-
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
     {
         Schema::create('userCart' ,function (Blueprint $table) {
             $table->bigIncrements('userCart_id');
@@ -33,5 +23,15 @@ class CartUserList extends Migration
             $table->string('status');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
     }
 }

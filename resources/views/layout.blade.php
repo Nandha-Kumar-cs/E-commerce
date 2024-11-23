@@ -15,7 +15,8 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nanum+Gothic+Coding&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-    .nav-link i , .nav-link {
+    .nav-link i,
+    .nav-link {
         font-size: 20px;
     }
 
@@ -70,10 +71,8 @@
         height: 12%;
 
     }
-    html
-    {
-        height: 100%;
-    }
+
+ 
     body {
         width: 100%;
         height: 100%;
@@ -85,7 +84,6 @@
         height: 88%;
 
     }
-
 </style>
 
 <body>
@@ -110,10 +108,10 @@
                 @endif
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{url('/home')}}"><i
-                                    class="bi bi-house-fill"></i></a>
+                                    class="bi bi-house-fill "></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{route('authenticateCart')}}"><i
@@ -123,7 +121,7 @@
 
                             @if (Auth::check())
 
-                                <a class="nav-link d-flex" >
+                                <a class="nav-link d-flex">
                                     <span>{{auth()->user()->name}}
 
 
@@ -131,19 +129,20 @@
                                     </span>
                                     <form action="{{url('/logout')}}" method="POST">
                                         @csrf
-                                        <button style="background:none;border:none"> <i
-                                                class="bi bi-box-arrow-right" title="logout"></i></button>
+                                        <button style="background:none;border:none"> <i class="bi bi-box-arrow-right"
+                                                title="logout"></i></button>
                                     </form>
                                 </a>
 
                             @else
-                              <div class="d-flex">
+                                <div class="d-flex align-items-center">
 
 
-                                <label for="user"><i class="bi bi-person align-center nav-link" style="font-size:20px"></i></label>
-                                {!! request()->is('register') ? '<a id="user" href= "/login" class="nav-link">Login</a>' : '<a id="user" href= "/register" class="nav-link">Signup</i></a>'   !!}
+                                    <label for="user" class="nav-link"><i class="bi bi-person align-center "
+                                            style="font-size:20px"></i></label>
+                                    {!! request()->is('register') ? '<a id="user" href= "/login" class="nav-link">Login</a>' : '<a id="user" href= "/register" class="nav-link">Signup</i></a>'   !!}
 
-                              </div>
+                                </div>
 
 
 
@@ -158,13 +157,17 @@
 
         @if (!(request()->is('login')) && !(request()->is('register')))
             <article class="d-flex justify-content-center">
-                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.electronics-brand').scrollIntoView({ behavior: 'smooth' })">
+                <p class="mx-3 sub-nav-link" type="button"
+                    onclick="document.querySelector('.electronics-brand').scrollIntoView({ behavior: 'smooth' })">
                     Electronics</p>
-                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.Mobiles-brand').scrollIntoView({ behavior: 'smooth' })">Mobile
+                <p class="mx-3 sub-nav-link" type="button"
+                    onclick="document.querySelector('.Mobiles-brand').scrollIntoView({ behavior: 'smooth' })">Mobile
                 </p>
-                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.for-accessories').scrollIntoView({ behavior: 'smooth' })">
+                <p class="mx-3 sub-nav-link" type="button"
+                    onclick="document.querySelector('.for-accessories').scrollIntoView({ behavior: 'smooth' })">
                     Accessories</p>
-                <p class="mx-3 sub-nav-link" type="button" onclick="document.querySelector('.for-mobilecase').scrollIntoView({ behavior: 'smooth' })">
+                <p class="mx-3 sub-nav-link" type="button"
+                    onclick="document.querySelector('.for-mobilecase').scrollIntoView({ behavior: 'smooth' })">
                     mobileCase</p>
                 <p class="mx-3 sub-nav-link"> |</p>
                 <p type="button" class="mx-3 sub-nav-brandName-apple"><i class="bi bi-apple"></i><span>Apple</span></p>

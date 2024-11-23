@@ -3,9 +3,7 @@
 Login
 @endsection
 <style>
-    .login-container {
-        height: 80%;
-    }
+    
 
     #login-form {
         padding: 50px;
@@ -36,7 +34,7 @@ Login
 
     </form>
     @if ($msg = Session::get('key'))
-        <div class="alert alert-danger text-center animate__animated animate__fadeIn ">{{$msg}}</div>
+        <div class="alert alert-danger text-center animate__animated animate__fadeIn " id="error-msg">{{$msg}}</div>
     @endif
 </div>
 
@@ -44,7 +42,7 @@ Login
     $(document).ready(function () {
         setTimeout(function () {
             $('#error-msg').hide();
-        });
+        } , 2000);
 
     });
 </script>

@@ -2,10 +2,24 @@
 @section('main-content')
 
 <style>
+    /* Apply 0.5s transition to carousel-inner */
+    .carousel-inner {
+        transition: transform 0.5s ease !important;
+        /* Smooth sliding transition */
+    }
+
+    /* Apply custom transition duration to carousel items */
     .carousel-item {
         transition: transform 0.5s ease !important;
-        /* Adjust transition time */
-        border: 1px solid black;
+        /* Control how long each item transition lasts */
+    }
+
+    /* Remove transition on initialization to avoid unwanted delay */
+    .carousel-item-next,
+    .carousel-item-prev,
+    .carousel-item.active {
+        transition: transform 0.5s ease !important;
+        /* For smooth active sliding */
     }
 </style>
 @if ($msg = Session::get('success'))
@@ -77,7 +91,8 @@
     <style>
         .electronics-brand,
         .Mobiles-brand,
-        .accessories, .mobilecase {
+        .accessories,
+        .mobilecase {
             opacity: 0.6;
             font-size: 25px;
         }
@@ -94,7 +109,8 @@
 
         .electronics-items,
         .mobile-items,
-        .accessories-items,.mobilecase{
+        .accessories-items,
+        .mobilecase {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
@@ -122,27 +138,29 @@
         <div class="electronics-items w-100 mt-3">
             @foreach ($products as $product)
 
+                <a href="{{url('viewProducts', ['id' => $product->E_id, 'category' => $product->productCode])}}" target="_blank"
+                    style="text-decoration:none;">
+                    <div class="card" id="{{$product->E_id}}">
+                        <img src="{{$product->img_link}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$product->card_title}}</h5>
+                            <p class="card-text" style="font-size:12px">{{$product->card_text}} <span
+                                    style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$product->rating}}
+                                    <i class="bi bi-star-fill"
+                                        style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
+                                </span>
+                            </p>
 
-                <div class="card" id="{{$product->E_id}}">
-                    <img src="{{$product->img_link}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$product->card_title}}</h5>
-                        <p class="card-text" style="font-size:12px">{{$product->card_text}} <span
-                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$product->rating}}
-                                <i class="bi bi-star-fill"
-                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
-                            </span>
-                        </p>
-
-                        @if ($product->limited_deal != '')
-                            <span class="card-text bg-danger text-white p-1"
-                                style="font-size:14px;border-radius:5px;">{{$product->limited_deal}}</span>
-                        @endif
-                        <p class="card-text mt-2 mb-0">${{$product->cost}}</p>
-                        <span class="card-text" style="font-size:12px;">{{$product->emi_option}}</span><br>
-                        <span class="card-text" style="font-size:12px;">{{$product->delivery_option}}</span><br>
+                            @if ($product->limited_deal != '')
+                                <span class="card-text bg-danger text-white p-1"
+                                    style="font-size:14px;border-radius:5px;">{{$product->limited_deal}}</span>
+                            @endif
+                            <p class="card-text mt-2 mb-0">${{$product->cost}}</p>
+                            <span class="card-text" style="font-size:12px;">{{$product->emi_option}}</span><br>
+                            <span class="card-text" style="font-size:12px;">{{$product->delivery_option}}</span><br>
+                        </div>
                     </div>
-                </div>
+                </a>
 
 
             @endforeach
@@ -156,27 +174,29 @@
         <div class="mobile-items w-100 mt-3">
             @foreach ($mobilelist as $mobile)
 
+                <a href="{{url('viewProducts', ['id' => $mobile->productid, 'category' => $mobile->productCode])}}" target="_blank"
+                    style="text-decoration:none;">
+                    <div class="card" id="{{$mobile->productid}}">
+                        <img src="{{$mobile->img_link}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$mobile->brand_name}}{{$mobile->version}}</h5>
+                            <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
+                                    style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$mobile->rating}}<i
+                                        class="bi bi-star-fill"
+                                        style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i></span>
+                            </p>
 
-                <div class="card" id="{{$mobile->productid}}">
-                    <img src="{{$mobile->img_link}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$mobile->brand_name}}{{$mobile->version}}</h5>
-                        <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
-                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$mobile->rating}}<i
-                                    class="bi bi-star-fill"
-                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i></span>
-                        </p>
+                            @if ($mobile->Limited_deal != '')
+                                <span class="card-text bg-danger text-white p-1"
+                                    style="font-size:14px;border-radius:5px;">{{$mobile->Limited_deal}}</span>
+                            @endif
 
-                        @if ($mobile->Limited_deal != '')
-                            <span class="card-text bg-danger text-white p-1"
-                                style="font-size:14px;border-radius:5px;">{{$mobile->Limited_deal}}</span>
-                        @endif
-
-                        <p class="card-text mt-2 mb-0">${{$mobile->price}}</p>
-                        <span class="card-text" style="font-size:12px;">{{$mobile->emi_option}}</span><br>
-                        <span class="card-text" style="font-size:12px;">{{$mobile->delivery_option}}</span><br>
+                            <p class="card-text mt-2 mb-0">${{$mobile->price}}</p>
+                            <span class="card-text" style="font-size:12px;">{{$mobile->emi_option}}</span><br>
+                            <span class="card-text" style="font-size:12px;">{{$mobile->delivery_option}}</span><br>
+                        </div>
                     </div>
-                </div>
+                </a>
 
 
             @endforeach
@@ -190,27 +210,30 @@
             @foreach ($accessories as $accessorie)
 
 
-                <div class="card" id="{{$accessorie->acc_id}}">
-                    <img src="{{$accessorie->img_link}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$accessorie->brand_name}}{{$accessorie->version}}</h5>
-                        <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
-                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$accessorie->rating}}
-                                <i class="bi bi-star-fill"
-                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
-                            </span>
-                        </p>
+                <a href="{{url('viewProducts', ['id' => $accessorie->acc_id, 'category' => $accessorie->productCode])}}"
+                    target="_blank" style="text-decoration:none;">
+                    <div class="card" id="{{$accessorie->acc_id}}">
+                        <img src="{{$accessorie->img_link}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$accessorie->brand_name}}{{$accessorie->version}}</h5>
+                            <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
+                                    style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$accessorie->rating}}
+                                    <i class="bi bi-star-fill"
+                                        style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
+                                </span>
+                            </p>
 
-                        @if ($accessorie->Limited_deal != '')
-                            <span class="card-text bg-danger text-white p-1"
-                                style="font-size:14px;border-radius:5px;">{{$accessorie->limited_deal}}</span>
-                        @endif
+                            @if ($accessorie->Limited_deal != '')
+                                <span class="card-text bg-danger text-white p-1"
+                                    style="font-size:14px;border-radius:5px;">{{$accessorie->limited_deal}}</span>
+                            @endif
 
-                        <p class="card-text mt-2 mb-0">${{$accessorie->price}}</p>
-                        <span class="card-text" style="font-size:12px;">{{$accessorie->emi_option}}</span><br>
-                        <span class="card-text" style="font-size:12px;">{{$accessorie->delivery_option}}</span><br>
+                            <p class="card-text mt-2 mb-0">${{$accessorie->price}}</p>
+                            <span class="card-text" style="font-size:12px;">{{$accessorie->emi_option}}</span><br>
+                            <span class="card-text" style="font-size:12px;">{{$accessorie->delivery_option}}</span><br>
+                        </div>
                     </div>
-                </div>
+                </a>
 
 
             @endforeach
@@ -223,30 +246,33 @@
     <div class="for-mobilecase  container d-flex flex-lg-column mt-5">
         <h2 class="mobilecase">MobileCase</h2>
         <div class="mobile-items w-100 mt-3">
-            @foreach ($mobiles as $mobile)
+            @foreach ($mobiles as $mobileCase)
 
 
-                <div class="card" id="{{$mobile->Case_id}}">
-                    <img src="{{$mobile->img_link}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$mobile->CaseName}}</h5>
-                        <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
-                                style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$mobile->Ratings}}
-                                <i class="bi bi-star-fill"
-                                    style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
-                            </span>
-                        </p>
+                <a href="{{url('viewProducts', ['id' => $mobileCase->Case_id, 'category' => $mobileCase->productCode])}}"
+                    target="_blank" style="text-decoration:none;">
+                    <div class="card" id="{{$mobileCase->Case_id}}">
+                        <img src="{{$mobileCase->img_link}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$mobileCase->CaseName}}</h5>
+                            <p class="card-text" style="font-size:12px"><strong>Ratings</strong> <span
+                                    style="background-color:green;color:white;padding:0px 10px;border-radius:5px;">{{$mobileCase->Ratings}}
+                                    <i class="bi bi-star-fill"
+                                        style="color:yellow;font-size:10px;text-align:center;padding-left:3px"></i>
+                                </span>
+                            </p>
 
-                        @if ($mobile->Limited_deal != '')
-                            <span class="card-text bg-danger text-white p-1"
-                                style="font-size:14px;border-radius:5px;">{{$mobile->limited_deal}}</span>
-                        @endif
+                            @if ($mobileCase->Limited_deal != '')
+                                <span class="card-text bg-danger text-white p-1"
+                                    style="font-size:14px;border-radius:5px;">{{$mobileCase->limited_deal}}</span>
+                            @endif
 
-                        <p class="card-text mt-2 mb-0">${{$mobile->price}}</p>
-                        <span class="card-text" style="font-size:12px;">{{$mobile->emi_option}}</span><br>
-                        <span class="card-text" style="font-size:12px;">{{$mobile->delivery_option}}</span><br>
+                            <p class="card-text mt-2 mb-0">${{$mobileCase->price}}</p>
+                            <span class="card-text" style="font-size:12px;">{{$mobileCase->emi_option}}</span><br>
+                            <span class="card-text" style="font-size:12px;">{{$mobileCase->delivery_option}}</span><br>
+                        </div>
                     </div>
-                </div>
+                </a>
 
 
             @endforeach
@@ -260,7 +286,6 @@
                     $('#login-successful-msg').hide();
                 }, 1000);
             }
-
 
         });
     </script>
