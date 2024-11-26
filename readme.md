@@ -22,34 +22,20 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## About Project
-<table>
+<p align="center">
+    <table>
     <tr>
         <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture.PNG?raw=true' width='400px'><br>Home Page</td>
         <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture4.PNG?raw=true' width='400px'><br>Add Cart Page</td>
     </tr>
+     <tr>
+        <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture5.PNG?raw=true' width='400px'><br>Cart Page</td>
+        <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/capture7.PNG?raw=true' width='400px'><br>Payment Cart Page</td>
+    </tr>
+    <tr>
+        <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture2.PNG?raw=true' width='400px'><br>Login Page</td>
+        <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture3.PNG?raw=true' width='400px'><br>Register Cart Page</td>
+    </tr>
 </table>
-
-<div style='display:flex;'>
-    <span>
-        <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture5.PNG?raw=true' width='400px'>
-        <p>Cart Page</p>
-    </span>
-     <span>
-        <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/capture7.PNG?raw=true' width='400px'>
-        <p>Payment Page</p>
-    </span>
-</div>
-<div style='display:flex;'>
-    <span>
-        <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture2.PNG?raw=true' width='400px'>
-        <p>Login Page</p>
-    </span>
-     <span>
-        <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture3.PNG?raw=true' width='400px'>
-        <p>Register Page</p>
-    </span>
-</div>
-
-
-
+</p>
 <h4>"Every click is a step closer to mastery!" This project is a testament to your growing expertise in Laravel and web development.</h4>
