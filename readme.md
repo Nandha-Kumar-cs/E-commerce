@@ -22,10 +22,12 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## About Project
-<h3>"Building dreams, one project at a time!" This mini e-commerce website is a personal upskilling project created with Laravel, showcasing your dedication to learning and innovation.</h3>
-| ![Home Page](https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture.PNG?raw=true) | ![Add Cart Page](https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture4.PNG?raw=true) |
-|:---:|:---:|
-| **Home Page** | **Add Cart Page** |
+<table>
+    <tr>
+        <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture.PNG?raw=true' width='400px'><br>Home Page</td>
+        <td> <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture4.PNG?raw=true' width='400px'><br>Add Cart Page</td>
+    </tr>
+</table>
 
 <div style='display:flex;'>
     <span>
