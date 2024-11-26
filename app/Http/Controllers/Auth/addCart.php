@@ -56,7 +56,7 @@ class addCart extends Controller
             ]);
             if ($inserted)
             {
-                return view('viewCart');
+                return redirect('/cart');
             }
 
 

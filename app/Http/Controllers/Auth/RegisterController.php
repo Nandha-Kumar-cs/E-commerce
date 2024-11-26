@@ -36,7 +36,7 @@ class RegisterController extends Controller
         $request->session()->regenerate();
 
 
-        return view('/home');
+        return redirect('/home');
     }
 
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     }
 
- 
+
     body {
         width: 100%;
         height: 100%;
@@ -121,18 +121,29 @@
 
                             @if (Auth::check())
 
-                                <a class="nav-link d-flex">
-                                    <span>{{auth()->user()->name}}
+                                    @if (auth()->user()->name == 'admin')
+
+                                             <a href="{{url('/adminDashboard')}}" class="nav-link">Dashboard</a>
+                                             <form action="{{url('/logout')}}" method="POST">
+                                                @csrf
+                                                <button style="background:none;border:none"> <i class="bi bi-box-arrow-right"
+                                                        title="logout"></i></button>
+                                            </form>
+
+                                    @else
+                                        <a class="nav-link d-flex">
+                                            <span>{{auth()->user()->name}}
 
 
 
-                                    </span>
-                                    <form action="{{url('/logout')}}" method="POST">
-                                        @csrf
-                                        <button style="background:none;border:none"> <i class="bi bi-box-arrow-right"
-                                                title="logout"></i></button>
-                                    </form>
-                                </a>
+                                            </span>
+                                            <form action="{{url('/logout')}}" method="POST">
+                                                @csrf
+                                                <button style="background:none;border:none"> <i class="bi bi-box-arrow-right"
+                                                        title="logout"></i></button>
+                                            </form>
+                                        </a>
+                                    @endif
 
                             @else
                                 <div class="d-flex align-items-center">
@@ -149,13 +160,15 @@
                             @endif
 
                         </li>
+
+
                     </ul>
                 </div>
             </div>
             <hr>
         </nav>
 
-        @if (!(request()->is('login')) && !(request()->is('register')))
+        @if(!(request()->is('login')) && !(request()->is('register')))
             <article class="d-flex justify-content-center">
                 <p class="mx-3 sub-nav-link" type="button"
                     onclick="document.querySelector('.electronics-brand').scrollIntoView({ behavior: 'smooth' })">

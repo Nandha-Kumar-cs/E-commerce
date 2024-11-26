@@ -18,6 +18,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\viewProducts;
 use App\Http\Controllers\Auth\addCart;
+use App\Http\Controllers\Auth\DeleteCart;
+use App\Http\Controllers\Auth\PaymentController;
+
 Route::get('/' ,[Home::class , 'Loadproducts'] );
 Route::get('/home' ,[Home::class , 'Loadproducts'] )->name('home');
 Route::view('/register', 'register')->name('register');
@@ -31,3 +34,7 @@ Route::get('/addtocart/{id}' , [cartChecking::class , 'addCart']);
 Route::get('/viewProducts/{id}/{category}',[viewProducts::class , 'showProducts'] );
 Route::view('ProductsView' , 'productView')->name('ProductsView');
 Route::get('addingProduct/{productId}/{productCode}/{cost}/{qty}' ,  [addCart::class , 'adding'])->name('addingProduct');
+Route::get('/delete/{userCartId}' , [DeleteCart::class , 'delete'])->name('delete');
+Route::get('/pay/{userCartId}' ,[PaymentController::class , 'pay'] );
+Route::view('/adminDashboard','Dashboard');
+
