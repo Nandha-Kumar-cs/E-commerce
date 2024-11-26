@@ -23,16 +23,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## About Project
 <h3>"Building dreams, one project at a time!" This mini e-commerce website is a personal upskilling project created with Laravel, showcasing your dedication to learning and innovation.</h3>
-<div style='display:flex;'>
-    <span>
-        <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture.PNG?raw=true' width='300px'>
-        <p>Home Page</p>
-    </span>
-     <span>
-        <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture4.PNG?raw=true' width='300px'>
-        <p>Add Cart Page</p>
-    </span>
-</div>
+| ![Home Page](https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture.PNG?raw=true) | ![Add Cart Page](https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture4.PNG?raw=true) |
+|:---:|:---:|
+| **Home Page** | **Add Cart Page** |
+
 <div style='display:flex;'>
     <span>
         <img src='https://github.com/Nandha-Kumar-cs/E-commerce/blob/main/ProjectImages/Capture5.PNG?raw=true' width='400px'>
