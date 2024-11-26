@@ -35,6 +35,6 @@ Route::get('/viewProducts/{id}/{category}',[viewProducts::class , 'showProducts'
 Route::view('ProductsView' , 'productView')->name('ProductsView');
 Route::get('addingProduct/{productId}/{productCode}/{cost}/{qty}' ,  [addCart::class , 'adding'])->name('addingProduct');
 Route::get('/delete/{userCartId}' , [DeleteCart::class , 'delete'])->name('delete');
-Route::get('/pay/{userCartId}' ,[PaymentController::class , 'pay'] );
+Route::get('/pay/{userCartId}/{productName}' ,[PaymentController::class , 'pay'] );
 Route::view('/adminDashboard','Dashboard');
 

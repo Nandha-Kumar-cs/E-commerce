@@ -1,23 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\userCartList;
-
+use Illuminate\Database\Eloquent\Collection;
 class PaymentController extends Controller
 {
-    public function pay($userId)
+    public function pay($userId , $productName)
     {
+
         $cart = userCartList::where('userCart_id', $userId)->first();
+        // dd($cart);
         if ($cart)
         {
-            $cart->status = 'paid';
-            $cart->save();
-            return back();
+            $cart->update(['status' => 'paid']);
+            $userPrice = $cart->totalCost;
+            $userName = $cart->userName;
+            $qty = $cart->qty;
+            $status = $cart->status;
+            $pName = $productName;
+            return view('payment', ['cost' => $userPrice , 'userName'=>$userName , 'qty'=>$qty , 'status'=>$status , 'pname'=>$pName]);
         }
-        return back()->with('key' , 'Cart no found');
+        return back()->with('key', 'Cart no found');
 
     }
 }

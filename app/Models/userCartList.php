@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class userCartList extends Model
 {
    protected $table = 'usercart' ;
-   protected $fillable = ['userName' , 'qty' , 'userCartId' , 'totalCost' , 'productCode' , 'productId' , 'status'];
+   protected $primaryKey = 'userCart_id';
+   protected $fillable = ['userName' , 'qty' , 'userCart_id' , 'totalCost' , 'productCode' , 'productId' , 'status'];
 }

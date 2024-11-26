@@ -64,7 +64,7 @@
                 <article class="d-flex align-items-center flex-column justify-content-center gap-3"><a
                         href="{{url('/delete', ['userCartId' => $productDetail['userCartId']])}}"><button
                             class="{{$productDetail['status'] != 'paid' ? 'btn btn-danger' : 'remove-btn'}}">remove</button></a>
-                    <a href="{{url('pay', ['userCartId' => $productDetail['userCartId']])}}"><button
+                    <a href="{{url('/pay', ['userCartId' => $productDetail['userCartId'] , 'productName'=>$productDetail['productName']])}}"><button
                             class="{{$productDetail['status'] != 'paid' ? 'btn btn-success' : 'remove-btn'}}">pay</button></a>
                 </article>
             </div>
